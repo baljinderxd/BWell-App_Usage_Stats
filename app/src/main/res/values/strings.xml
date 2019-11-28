@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">BWell</string>
+    <string name="total_usage">Total Usage</string>
+    <string name="camera_permission">Camera Permission</string>
+    <string name="pie_chart_demo">Pie Chart Demo</string>
+    <string name="bar_chart_demo">Bar Chart Demo</string>
+    <string name="total_time">Total Time:</string>
+    <string name="today_s_usage_details">Today\'s Usage Details</string>
+    <string name="_00">00</string>
+    <string name="hour_s">Hour(s)</string>
+    <string name="__00">00</string>
+    <string name="minute_s">Minute(s)</string>
+    <string name="textview">TextView</string>
+    <string name="usage_distribution">Usage Distribution</string>
+    <string name="app_namee">App Name</string>
+    <string name="app_name3">App Name</string>
+    <string name="previous_usage_details">Previous Usage Details</string>
+    <string name="top_five_most_used_apps">Top Five Most Used Apps</string>
+    <string name="donate">Donate :-)</string>
+    <string name="yesterday_s_usage_details">Yesterday\'s Usage Details</string>
+    <string name="last_7_days_usage_details">Last 7 Days Usage Details</string>
+    <string name="top_five_most_used_appss">Top Five Most Used Apps</string>
+</resources>
