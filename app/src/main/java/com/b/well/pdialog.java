@@ -1,3 +1,7 @@
+//Class to show dialog for asking usage stats permission
+//On click it navigates to app list where permission is needed to be granted
+//Intent on line number 26 navigates to permission page when positive button is pressed
+//For now there is no negative button to deny access and exit app
 package com.b.well;
 
 import android.app.Dialog;
