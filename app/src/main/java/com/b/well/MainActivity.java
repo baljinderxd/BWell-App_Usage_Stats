@@ -61,25 +61,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        callme();
+        callme();//Function for working in main activity;called when activity is created
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        callme();
+        callme();//Function invoked when activity is resumed from recent app list
 
     }
-
+//Function to check for permission, ask for permission, and to display today's usage stats along with the piechart
     void callme()
     {
-        String bb = String.valueOf(Monitor.hasUsagePermission());
+        String bb = String.valueOf(Monitor.hasUsagePermission());//Monitor.hasUsagePermission is used from external library which checks if usage permission is granted or not
         if (bb.equals("false")) {
             pdialog exampleDialog = new pdialog();
             exampleDialog.show(getSupportFragmentManager(), "Please Provide Usage Access Permission");
+        //If permission is false, dialog is shown asking for permission which navigates to the settings
         }
         else {
-
+//If permission was granted, normal functionality takes place
             prebtn = findViewById(R.id.pre_btn);
             pieChart = findViewById(R.id.pieChart);
             tud = findViewById(R.id.tud);
