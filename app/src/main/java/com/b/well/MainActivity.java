@@ -98,37 +98,38 @@ public class MainActivity extends AppCompatActivity {
             fillah4 = findViewById(R.id.fillah4);
             fillah5 = findViewById(R.id.fillah5);
 
+            //Declaring long variables for saving time instances 
             long endTime, beginTime;
             Calendar c = Calendar.getInstance();
-            endTime = c.getTimeInMillis();
+            endTime = c.getTimeInMillis();//Current date and time
 
             c = Calendar.getInstance();
-            c.set(Calendar.HOUR_OF_DAY, 0);
+            c.set(Calendar.HOUR_OF_DAY, 0);//Set time to midnight for begining of interval
             c.set(Calendar.MINUTE, 0);
             c.set(Calendar.SECOND, 0);
             c.set(Calendar.MILLISECOND, 0);
             beginTime = c.getTimeInMillis();
 
-            DateFormat simple = DateFormat.getDateInstance();
+            DateFormat simple = DateFormat.getDateInstance();//Set format of date to display at top
             Date result = new Date(beginTime);
             tud.setText(String.valueOf("Today's Stats: " + simple.format(result)));
 
-            Activity h = this;
+            Activity h = this;//To pass context to classes for usage stats
 
-            usage_stats u = new usage_stats();
+            usage_stats u = new usage_stats();//Usage stats object created
 
 
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            ResolveInfo resolveInfo = getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+            Intent intent = new Intent(Intent.ACTION_MAIN);//New intent created
+            intent.addCategory(Intent.CATEGORY_HOME);//Intent to know which app is current launcger app
+            ResolveInfo resolveInfo = getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);//Tells only default launcher  
             String currentLauncherName = null;
             if (resolveInfo != null)
-                currentLauncherName = resolveInfo.activityInfo.packageName;
-            finalAppList ln = new finalAppList(h);
-            ln.setAppName(currentLauncherName);
-            u.launchername = currentLauncherName;
-            u.getUsageStats(INTERVAL_WEEKLY, beginTime, endTime, h);
-            u.setinput();
+                currentLauncherName = resolveInfo.activityInfo.packageName;//Set string value to package name of current default launcher
+            finalAppList ln = new finalAppList(h);//Object of finalapplist to store launcher name 
+            ln.setAppName(currentLauncherName);//Function converts package name of launcher to App for future convinience 
+            u.launchername = currentLauncherName;//Sets launcher name in usagestats object
+            u.getUsageStats(INTERVAL_WEEKLY, beginTime, endTime, h);//Passes interval into object to get the usage stats list ready
+            u.setinput();//Sets input for total time to be displayed
 
             finalAppList[] f = new finalAppList[u.showStats().size()];
 
