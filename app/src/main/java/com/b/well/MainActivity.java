@@ -131,44 +131,47 @@ public class MainActivity extends AppCompatActivity {
             u.getUsageStats(INTERVAL_WEEKLY, beginTime, endTime, h);//Passes interval into object to get the usage stats list ready
             u.setinput();//Sets input for total time to be displayed
 
-            finalAppList[] f = new finalAppList[u.showStats().size()];
+            finalAppList[] f = new finalAppList[u.showStats().size()];//Array of objects for storing usage stats of apps
 
+            //Initializing objects
             for (int p = 0; p < u.showStats().size(); p++) {
                 f[p] = new finalAppList(h);
 
             }
 
 
-            long max1 = 0;
-            int maxp1 = 0;
+            long max1 = 0;//To store time usage of app used most
+            int maxp1 = 0;//To store position of app used most
 
             int z = 0;
+            //Storing data of usageStats in objects for easy access
             for (Map.Entry<String, UsageStats> entry : u.showStats().entrySet()) {
 
-                f[z].totaltime = entry.getValue().getTotalTimeInForeground();
-                f[z].setAppName(entry.getValue().getPackageName());
-                f[z].hrs = (entry.getValue().getTotalTimeInForeground() / (1000 * 60 * 60));
-                f[z].mins = (entry.getValue().getTotalTimeInForeground() / (1000 * 60)) % 60;
-                f[z].setinput();
+                f[z].totaltime = entry.getValue().getTotalTimeInForeground();//Saves total time in milliseconds
+                f[z].setAppName(entry.getValue().getPackageName());//Function sets name of app from its package name
+                f[z].hrs = (entry.getValue().getTotalTimeInForeground() / (1000 * 60 * 60));//Sets no of hours app used
+                f[z].mins = (entry.getValue().getTotalTimeInForeground() / (1000 * 60)) % 60;//Sets no of minutes app used
+                f[z].setinput();//Sets output to be displayed according to digits
                 z++;
             }
 
 
             long sum = 0;
             for (int l = 0; l < u.showStats().size(); l++) {
+                //Conditions being checked are to get most used app and to keep launcher app or any uninstalled app from being in the list
                 if (f[l].totaltime > max1 && !f[l].appname.equals(ln.appname) && !f[l].appname.equals("Uninstalled :(")) {
-                    max1 = f[l].totaltime;
-                    maxp1 = l;
+                    max1 = f[l].totaltime;//If found max1 is assigned bigger value
+                    maxp1 = l;//Position of the particular app
 
                 }
             }
 
 
-            filltt.setText(u.input);
+            filltt.setText(u.input);//Displays input of total usage
 
 
-            an1.setText(f[maxp1].appname);
-            fillah1.setText(f[maxp1].input);
+            an1.setText(f[maxp1].appname);//Displays name of app used most
+            fillah1.setText(f[maxp1].input);//Displays its usage time
 
             long max2 = 0;
             int maxp2 = 0;
