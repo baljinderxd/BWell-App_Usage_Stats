@@ -173,18 +173,19 @@ public class MainActivity extends AppCompatActivity {
             an1.setText(f[maxp1].appname);//Displays name of app used most
             fillah1.setText(f[maxp1].input);//Displays its usage time
 
-            long max2 = 0;
-            int maxp2 = 0;
-            for (int l = 0; l < u.showStats().size(); l++) {
+            long max2 = 0;//For storing second most used app
+            int maxp2 = 0;//For storing position of second most used app
+            for (int l = 0; l < u.showStats().size(); l++) {//Extra condition where name should not be same as of first most used
+                //to avoid repeating of same app due to problems in usageStats API
                 if (f[l].totaltime < max1 && f[l].totaltime > max2 && !f[l].appname.equals(f[maxp1].appname) &&
                         !f[l].appname.equals("Uninstalled :(") && !f[l].appname.equals(ln.appname)) {
-                    max2 = f[l].totaltime;
-                    maxp2 = l;
+                    max2 = f[l].totaltime;//Stores total time of app
+                    maxp2 = l;//Stores position 
 
                 }
             }
-            an2.setText(f[maxp2].appname);
-            fillah2.setText(f[maxp2].input);
+            an2.setText(f[maxp2].appname);//Writes app name of second most used
+            fillah2.setText(f[maxp2].input);//Writes total usage of above
 
 
             long max3 = 0;
