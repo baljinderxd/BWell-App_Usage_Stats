@@ -233,48 +233,50 @@ public class MainActivity extends AppCompatActivity {
             fillah5.setText(f[maxp5].input);
 
 
+            //Variable to set time for remaining apps for pie chart
             long remval = u.j - u.launcherTime - f[maxp1].totaltime - f[maxp2].totaltime
                     - f[maxp3].totaltime - f[maxp4].totaltime - f[maxp5].totaltime;
 
 
-            pieChart.getDescription().setEnabled(false);
+            pieChart.getDescription().setEnabled(false);//Sets description to false
             pieChart.setExtraOffsets(5, 10, 5, 5);
-            pieChart.setDragDecelerationFrictionCoef(1f);
-            pieChart.setDrawHoleEnabled(false);
-            pieChart.setHoleColor(Color.BLACK);
+            pieChart.setDragDecelerationFrictionCoef(1f);//Sets friction (Low value corresponds low spinning,High corresponds to more)
+            pieChart.setDrawHoleEnabled(false);//Sets hole in the pie chart
+            pieChart.setHoleColor(Color.BLACK);//Color for hole
             pieChart.setTransparentCircleRadius(61f);
             pieChart.getLegend().setTextColor(Color.WHITE);
             pieChart.getLegend().setTextSize(8);
 
 
+            //Makes a list to store colors for piechart 
             final int[] MY_COLORS = {Color.rgb(176, 9, 9), Color.rgb(68, 138, 255),
                     Color.rgb(255, 193, 7), Color.rgb(179, 119, 98),
                     Color.rgb(46, 166, 46),
                     Color.rgb(123, 50, 168)};
-            ArrayList<Integer> colors = new ArrayList<>();
+            ArrayList<Integer> colors = new ArrayList<>();//To store colors in array list
 
-            for (int v : MY_COLORS) colors.add(v);
+            for (int v : MY_COLORS) colors.add(v);//Adding colors to the list
 
-            ArrayList<PieEntry> yValues = new ArrayList<>();
+            ArrayList<PieEntry> yValues = new ArrayList<>();//List to store piechart data
 
-            yValues.add(new PieEntry(f[maxp1].totaltime, f[maxp1].appname));
+            yValues.add(new PieEntry(f[maxp1].totaltime, f[maxp1].appname));//Adds total time and name of the app
             yValues.add(new PieEntry(f[maxp2].totaltime, f[maxp2].appname));
             yValues.add(new PieEntry(f[maxp3].totaltime, f[maxp3].appname));
             yValues.add(new PieEntry(f[maxp4].totaltime, f[maxp4].appname));
             yValues.add(new PieEntry(f[maxp5].totaltime, f[maxp5].appname));
             yValues.add(new PieEntry(remval, "Others"));
 
-            PieDataSet dataSet = new PieDataSet(yValues, "<-- Applications");
+            PieDataSet dataSet = new PieDataSet(yValues, "<-- Applications");//Creates new pie data set to display data on piechart
             dataSet.setSliceSpace(3f);
             dataSet.setSelectionShift(5f);
-            dataSet.setColors(colors);
-            dataSet.setValueFormatter(new PercentFormatter(pieChart));
-            pieChart.setUsePercentValues(true);
+            dataSet.setColors(colors);//Sets color of slices
+            dataSet.setValueFormatter(new PercentFormatter(pieChart));//Adds '%' symbol with data
+            pieChart.setUsePercentValues(true);//Enables percentage values
 
-            PieData data = new PieData((dataSet));
+            PieData data = new PieData((dataSet));//Creates data using the data set
             data.setValueTextSize(10f);
             data.setValueTextColor(Color.WHITE);
-            pieChart.setData(data);
+            pieChart.setData(data);//Enables piechart or show it on activity
 
             final Handler handler = new Handler();
 
