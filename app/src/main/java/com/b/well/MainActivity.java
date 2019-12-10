@@ -278,20 +278,21 @@ public class MainActivity extends AppCompatActivity {
             data.setValueTextColor(Color.WHITE);
             pieChart.setData(data);//Enables piechart or show it on activity
 
-            final Handler handler = new Handler();
+            final Handler handler = new Handler();//Handler is created
 
+            //When previous button is pressed we show a dialog saying laoding data and loads prevoiusUsage activity
             prebtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(MainActivity.this, "Loading Data",
                             Toast.LENGTH_LONG).show();
                     Toast.makeText(MainActivity.this, "Loading Data",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG).show();//Toast shown two times to show it for long time
 
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            // Do something after 5s = 5000ms
+                            // Starts activity after 2 seconds as specified in handler in line 298
                             startActivity(new Intent(MainActivity.this, PreviousUsage.class));
                         }
                     }, 2000);
