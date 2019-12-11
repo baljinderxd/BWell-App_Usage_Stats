@@ -1,3 +1,4 @@
+//Similar to MainActivity code , just different time intervals are used 
 package com.b.well;
 
 import android.app.Activity;
